@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>HueWatchSample.iPhoneWatchKitApp</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.calvarylogic.watchkitapp</string>
+	<string>com.calvarylogic.huewatchsample.watchkitapp</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleShortVersionString</key>
@@ -20,7 +20,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.calvarylogic</string>
+	<string>com.calvarylogic.huewatchsample</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 	<key>XSAppIconAssets</key>

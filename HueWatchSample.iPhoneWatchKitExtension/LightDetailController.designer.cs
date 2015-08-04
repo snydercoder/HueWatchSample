@@ -8,8 +8,8 @@ using Foundation;
 
 namespace HueWatchSample.iPhoneWatchKitExtension
 {
-	[Register ("GlanceController")]
-	partial class GlanceController
+	[Register ("LightDetailController")]
+	partial class LightDetailController
 	{
 		void ReleaseDesignerOutlets ()
 		{

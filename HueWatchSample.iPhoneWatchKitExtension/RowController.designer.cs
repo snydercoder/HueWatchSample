@@ -11,11 +11,11 @@ using UIKit;
 
 namespace HueWatchSample.iPhoneWatchKitExtension
 {
-	[Register ("InterfaceController")]
-	partial class InterfaceController
+	[Register ("RowController")]
+	partial class RowController
 	{
 		[Outlet]
-		WatchKit.WKInterfaceTable lightListTable { get; set; }
+		public WatchKit.WKInterfaceLabel lightLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{

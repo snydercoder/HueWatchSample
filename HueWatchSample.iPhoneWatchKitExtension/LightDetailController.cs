@@ -5,9 +5,9 @@ using Foundation;
 
 namespace HueWatchSample.iPhoneWatchKitExtension
 {
-	public partial class GlanceController : WKInterfaceController
+	public partial class LightDetailController : WKInterfaceController
 	{
-		public GlanceController (IntPtr handle) : base (handle)
+		public LightDetailController (IntPtr handle) : base (handle)
 		{
 		}
 

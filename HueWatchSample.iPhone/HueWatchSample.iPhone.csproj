@@ -92,7 +92,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\HueWatchSample.iPhoneWatchKitExtension\HueWatchSample.iPhoneWatchKitExtension.csproj">
-      <Project>{BD0434D6-28E5-4F2C-96EF-E2D99491BAEE}</Project>
+      <Project>{15A8A597-1640-4468-9453-094831B72332}</Project>
       <Name>HueWatchSample.iPhoneWatchKitExtension</Name>
       <IsAppExtension>True</IsAppExtension>
     </ProjectReference>
