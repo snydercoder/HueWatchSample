@@ -18,6 +18,9 @@
                                         <items>
                                             <label alignment="left" text="Label" id="15"/>
                                         </items>
+                                        <connections>
+                                            <segue id="106" destination="17" kind="push" identifier="lightDetailSegue"/>
+                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="lightLabel" destination="15" id="name-outlet-15"/>
@@ -30,12 +33,18 @@
                             </items>
                         </table>
                     </items>
-					<connections>
+                    <connections>
                         <outlet property="lightListTable" destination="gWx-dy-WEm" id="OAj-YU-pmM"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <scene sceneID="16">
+            <objects>
+                <controller id="17" customClass="LightDetailController"/>
+            </objects>
+            <point key="canvasLocation" x="254" y="7"/>
         </scene>
     </scenes>
 </document>

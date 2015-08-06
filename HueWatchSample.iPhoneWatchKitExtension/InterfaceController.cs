@@ -43,17 +43,34 @@ namespace HueWatchSample.iPhoneWatchKitExtension
 		private void LoadTableRows (List<Light> lights)
 		{
 			this.lightListTable.SetNumberOfRows((nint)lights.Count, "default");
-			//lightListTable.SetRowTypes (new [] {"default", "type1", "type2", "default", "default"});
+
 			// Create all of the table rows.
 			for (var i = 0; i < lights.Count; i++) {
-				var elementRow = (RowController)this.lightListTable.GetRowController (i);
+				var lightRow = (RowController)this.lightListTable.GetRowController (i);
 				Light currentRowLight = lights [i];
 
-				elementRow.lightLabel.SetText (string.Format("{0}: {1}", currentRowLight.Id.ToString(), currentRowLight.Description));
-			}
+				//Set the underlying row object as the current light in the loop
+				lightRow.LightObject = currentRowLight;
 
-		
+				//Set the display
+				lightRow.lightLabel.SetText (string.Format("{0}: {1}", currentRowLight.Id.ToString(), currentRowLight.Description));
+			}				
 		}
+
+		public override NSObject GetContextForSegue (string segueIdentifier)
+		{
+			return base.GetContextForSegue (segueIdentifier);
+		}
+
+		public override NSObject GetContextForSegue (string segueIdentifier, WKInterfaceTable table, nint rowIndex)
+		{
+			//return base.GetContextForSegue (segueIdentifier, table, rowIndex);
+
+			var lightRow = (RowController)table.GetRowController (rowIndex);
+			return new NSObjectWrapper<Light> (lightRow.LightObject);
+		}
+
+
 	}
 }
 
