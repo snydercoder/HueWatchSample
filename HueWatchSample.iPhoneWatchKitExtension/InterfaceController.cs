@@ -10,6 +10,7 @@ namespace HueWatchSample.iPhoneWatchKitExtension
 	public partial class InterfaceController : WKInterfaceController
 	{
 		List<Light> _lights;
+		HueConnector _hueConnector = new HueConnector("http://192.168.0.20", "290e46a369a4577253d1ed61fb85a93");
 
 		public InterfaceController (IntPtr handle) : base (handle)
 		{
@@ -22,7 +23,7 @@ namespace HueWatchSample.iPhoneWatchKitExtension
 			// Configure interface objects here.
 			Console.WriteLine ("{0} awake with context", this);
 
-			_lights = Lights.Discover ();
+			_lights = _hueConnector.Discover ();
 		}
 
 		public override void WillActivate ()

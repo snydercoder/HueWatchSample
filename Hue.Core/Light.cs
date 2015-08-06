@@ -4,13 +4,13 @@ namespace Hue.Core
 {
 	public class Light
 	{
-		public Light (int id, string description)
+		public Light (string id, string description)
 		{
 			this.Id = id;
 			this.Description = description;
 		}
 
-		public int Id {
+		public string Id {
 			get;
 			set;
 		}
