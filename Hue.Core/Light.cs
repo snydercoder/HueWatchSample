@@ -4,10 +4,12 @@ namespace Hue.Core
 {
 	public class Light
 	{
-		public Light (string id, string description)
+		public Light (string id, string description, bool onOff, int brightness)
 		{
 			this.Id = id;
 			this.Description = description;
+			this.On = onOff;
+			this.Brightness = brightness;
 		}
 
 		public string Id {
@@ -26,11 +28,6 @@ namespace Hue.Core
 		}
 
 		public bool On {
-			get;
-			set;
-		}
-
-		public ColorType Color {
 			get;
 			set;
 		}

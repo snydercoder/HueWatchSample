@@ -42,7 +42,29 @@
         </scene>
         <scene sceneID="16">
             <objects>
-                <controller id="17" customClass="LightDetailController"/>
+                <controller id="17" customClass="LightDetailController">
+                    <items>
+                        <label alignment="left" text="Label" id="107"/>
+                        <switch width="1" alignment="left" value="YES" title="On/Off" id="108">
+                            <connections>
+                                <action selector="onOffSwitch_Activated:" destination="17" id="113"/>
+                            </connections>
+                        </switch>
+                        <slider width="1" alignment="left" value="0.5" steps="255" id="109" maximum="255" continuous="YES"/>
+                        <separator alignment="left" id="110"/>
+                        <button width="1" alignment="left" title="Voice" id="111">
+                            <connections>
+                                <action selector="voiceInputButton_Activated:" destination="17" id="112"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="voiceInputButton" destination="111" id="name-outlet-111"/>
+                        <outlet property="brightnessSlider" destination="109" id="name-outlet-109"/>
+                        <outlet property="onOffSwitch" destination="108" id="name-outlet-108"/>
+                        <outlet property="lightNameLabel" destination="107" id="name-outlet-107"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="254" y="7"/>
         </scene>

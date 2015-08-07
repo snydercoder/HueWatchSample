@@ -38,26 +38,23 @@ namespace Hue.Core
 						string lightId = (i+1).ToString();
 						JsonValue jsonLight = jsonLights[lightId];
 						string lightName = jsonLight["name"];
+						bool onOff;
+						if (!bool.TryParse (jsonLight["state"]["on"].ToString(), out onOff))
+							onOff = false;
+						int brightness;
+						if (!int.TryParse (jsonLight["state"]["bri"].ToString(), out brightness))
+							brightness = 0;
 
-						lights.Add(new Light(lightId, lightName));
+						lights.Add(new Light(lightId, lightName, onOff, brightness));
 					}
 				}
 			}
-
-			/*
-			List<Light> lights = new List<Light> ();
-			lights.Add (new Light (1, "Family Room"));
-			lights.Add (new Light (2, "Kitchen"));
-			lights.Add (new Light (3, "Back Patio"));
-			lights.Add (new Light (4, "Front Porch"));
-			lights.Add (new Light (5, "Garage"));
-			lights.Add (new Light (6, "Master Bedroom"));
-			lights.Add (new Light (7, "Main Bathroom"));
-			lights.Add (new Light (8, "Back Balcony"));
-			*/
-
 			return lights;
 		}
+
+		//TODO: Turn on/off
+
+		//TODO: Adjust brightness
 	}
 }
 
