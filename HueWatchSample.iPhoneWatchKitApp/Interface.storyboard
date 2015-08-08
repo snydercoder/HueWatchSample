@@ -50,7 +50,11 @@
                                 <action selector="onOffSwitch_Activated:" destination="17" id="113"/>
                             </connections>
                         </switch>
-                        <slider width="1" alignment="left" value="0.5" steps="255" id="109" maximum="255" continuous="YES"/>
+                        <slider width="1" alignment="left" value="0.5" steps="3" id="109" maximum="255">
+                            <connections>
+                                <action selector="brightnessSlider_Activated:" destination="17" id="114"/>
+                            </connections>
+                        </slider>
                         <separator alignment="left" id="110"/>
                         <button width="1" alignment="left" title="Voice" id="111">
                             <connections>

@@ -4,16 +4,35 @@ using System.Net;
 using System.IO;
 using System.Json;
 using System.Threading;
+using System.Text;
 
 namespace Hue.Core
 {
 	public class HueConnector
 	{
+		private static HueConnector _connector = null;
+
 		string _baseUrl;
 
-		public HueConnector (string url, string apiKey)
+		private HueConnector (string url, string apiKey)
 		{
 			_baseUrl = string.Format ("{0}/api/{1}", url, apiKey);
+		}
+
+		public static HueConnector GetConnector(string url, string apiKey)
+		{
+			if (_connector == null)
+				_connector = new HueConnector (url, apiKey);
+
+			return _connector;
+		}
+
+		public static HueConnector GetConnector()
+		{
+			if (_connector == null)
+				throw new Exception ("No connector has been initialized yet.  Use GetConnector(url, apiKey) to initialize it.");
+
+			return _connector;
 		}
 
 		public List<Light> Discover()
@@ -51,10 +70,34 @@ namespace Hue.Core
 			}
 			return lights;
 		}
+			
+		public void FlipSwitch(Light light, bool turnOn)
+		{
+			string requestData = string.Format("{{\"on\" : {0}}}", turnOn.ToString().ToLower());
+			this.SendCommand (light, requestData);
+		}
 
-		//TODO: Turn on/off
+		public void AdjustBrightness(Light light, int brightnessLevel)
+		{
+			string requestData = string.Format("{{\"bri\" : {0}}}", brightnessLevel.ToString());
+			this.SendCommand (light, requestData);
+		}
 
-		//TODO: Adjust brightness
+		private void SendCommand(Light light, string requestData)
+		{
+			ASCIIEncoding encoding = new ASCIIEncoding ();
+			byte[] data = encoding.GetBytes (requestData);
+
+			HttpWebRequest request = new HttpWebRequest (new Uri (string.Format("{0}/lights/{1}/state", _baseUrl, light.Id)));
+			request.ContentType = "application/json";
+			request.Method = "PUT";
+
+			// Set the content length of the string being posted.
+			request.ContentLength = data.Length;
+
+			Stream newStream = request.GetRequestStream ();
+			newStream.Write (data, 0, data.Length);
+		}
 	}
 }
 

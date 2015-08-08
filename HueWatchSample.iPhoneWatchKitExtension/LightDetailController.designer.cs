@@ -30,6 +30,10 @@ namespace HueWatchSample.iPhoneWatchKitExtension
 		[GeneratedCode ("iOS Designer", "1.0")]
 		WatchKit.WKInterfaceButton voiceInputButton { get; set; }
 
+		[Action ("brightnessSlider_Activated:")]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		partial void brightnessSlider_Activated (WatchKit.WKInterfaceSlider sender);
+
 		[Action ("onOffSwitch_Activated:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		partial void onOffSwitch_Activated (WatchKit.WKInterfaceSwitch sender);

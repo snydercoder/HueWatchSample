@@ -10,10 +10,11 @@ namespace HueWatchSample.iPhoneWatchKitExtension
 	public partial class InterfaceController : WKInterfaceController
 	{
 		List<Light> _lights;
-		HueConnector _hueConnector = new HueConnector("http://192.168.0.20", "290e46a369a4577253d1ed61fb85a93");
+		HueConnector _hueConnector;
 
 		public InterfaceController (IntPtr handle) : base (handle)
 		{
+			_hueConnector = HueConnector.GetConnector("http://192.168.0.20", "290e46a369a4577253d1ed61fb85a93");
 		}
 
 		public override void Awake (NSObject context)
@@ -55,11 +56,6 @@ namespace HueWatchSample.iPhoneWatchKitExtension
 				//Set the display
 				lightRow.lightLabel.SetText (string.Format("{0}: {1}", currentRowLight.Id.ToString(), currentRowLight.Description));
 			}				
-		}
-
-		public override NSObject GetContextForSegue (string segueIdentifier)
-		{
-			return base.GetContextForSegue (segueIdentifier);
 		}
 
 		public override NSObject GetContextForSegue (string segueIdentifier, WKInterfaceTable table, nint rowIndex)
